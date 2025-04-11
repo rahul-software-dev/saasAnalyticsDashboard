@@ -1,0 +1,21 @@
+# Use an official Node.js runtime as the base image
+FROM node:18-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY ../backend/package*.json ./
+RUN npm install --production
+
+# Copy the rest of the backend source code
+COPY ../backend .
+
+# Set environment variables (can also be overridden in docker-compose)
+ENV NODE_ENV=production
+
+# Expose backend port
+EXPOSE 5000
+
+# Start the server
+CMD [ "node", "app.js" ]
