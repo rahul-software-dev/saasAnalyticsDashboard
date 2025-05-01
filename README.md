@@ -1,70 +1,42 @@
-# SaaS Usage Analytics Dashboard
-
-A full-stack, production-ready analytics dashboard for SaaS platforms that tracks user behavior, feature adoption, engagement metrics, and tenant-specific activity in real-time.
-
----
-
-## 🌐 Tech Stack
-
-- **Frontend:** React, Chart.js, Axios
-- **Backend:** Node.js, Express.js, MongoDB
-- **Auth:** JWT, RBAC (Role-Based Access Control)
-- **DevOps:** Docker, Docker Compose, AWS EC2 (deployable)
-- **Other:** Express Rate Limit, Winston Logger, Joi Validation
-
----
-
-## 📊 Key Features
-
-- Real-time usage tracking and analytics
-- Multi-tenant architecture with isolated data
-- Role-based access and permission control
-- JWT authentication with secure session management
-- Custom dashboards per user/tenant
-- Audit logs, feature toggles, and feedback capture
-- Settings management and environment configuration
-
----
-
-## 🧭 Project Structure
-
 saas-analytics-dashboard/
-├── backend/             # Express backend with API, services, models
-├── frontend/            # React frontend with components and pages
-├── docker/              # Dockerfiles and docker-compose setup
-├── .env                 # Environment configuration
-└── README.md
+│
+├── client/                            # React Frontend
+│   ├── public/
+│   └── src/
+│       ├── assets/                    # Images, fonts, etc.
+│       ├── components/                # Reusable UI components (charts, tables, etc.)
+│       ├── hooks/                     # Custom React hooks
+│       ├── scenes/                    # Page-level components (Dashboard, Settings, etc.)
+│       ├── state/                     # State management (Redux, Context, API services)
+│       ├── utils/                     # Helper functions
+│       ├── styles/                    # Global/shared styles
+│       ├── App.jsx
+│       ├── main.jsx
+│       └── routes.jsx
+│   ├── .env
+│   └── package.json
+│
+├── server/                            # Node.js/Express Backend
+│   ├── controllers/                   # Route controllers
+│   ├── models/                        # Mongoose models (User, Tenant, etc.)
+│   ├── routes/                        # Express route definitions
+│   ├── middlewares/                   # Auth, RBAC, validation, logging, rate limiting
+│   ├── services/                      # Business logic, analytics processing
+│   ├── utils/                         # Utility functions (JWT, hashing, etc.)
+│   ├── config/                        # App/environment configs, DB connection
+│   ├── logs/                          # Winston log files, audit logs
+│   ├── app.js                         # Express app setup
+│   ├── server.js                      # Entry point
+│   ├── .env
+│   └── package.json
+│
+├── docker/                            # Docker & Deployment
+│   ├── Dockerfile.client              # Dockerfile for React app
+│   ├── Dockerfile.server              # Dockerfile for Node.js backend
+│   └── nginx.conf                     # (Optional) Nginx reverse proxy config
+│
+├── docker-compose.yml                 # Docker Compose for orchestration
+├── .env                               # Root (if needed, for deployment)
+├── README.md
+└── package.json                       # Root (optional, for monorepo tooling)
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) ≥ v18
-- [Docker](https://www.docker.com/) & Docker Compose
-- [MongoDB](https://www.mongodb.com/) (local or cloud)
-
-### Environment Setup
-
-1. Copy `.env.example` to `.env` and configure values:
-   ```bash
-   cp .env.example .env
-
-
-Start services with Docker Compose:
-   docker-compose up --build
-
-
-Frontend
-cd frontend
-npm install
-npm start
-
-Backend
-cd backend
-npm install
-npm run dev  # or npm start
-
-
-This project is licensed under the MIT License.
