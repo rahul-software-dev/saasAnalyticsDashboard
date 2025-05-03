@@ -1,0 +1,22 @@
+# Node.js version
+node >=18.0.0
+
+# Core dependencies
+express
+mongoose
+jsonwebtoken
+bcryptjs
+cors
+dotenv
+helmet
+joi
+nodemailer
+express-rate-limit
+winston
+winston-daily-rotate-file
+morgan
+json2csv
+
+# Dev dependencies
+nodemon
+eslint

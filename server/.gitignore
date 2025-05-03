@@ -1,0 +1,49 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+app.log
+error.log
+combined.log
+audit.log
+*.log.*
+
+# Winston rotated logs
+logs/app/
+logs/error/
+logs/audit/
+
+# Database
+*.sqlite
+*.db
+*.tgz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Coverage
+coverage/
+
+# Build artifacts
+dist/
+build/
+tmp/
+temp/
+.cache/
