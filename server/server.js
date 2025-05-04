@@ -1,4 +1,6 @@
 // server/server.js
+console.log('Starting server.js');
+try {
 const http = require('http');
 const app = require('./app');
 const { connectDB, app: appConfig } = require('./config');
@@ -54,3 +56,6 @@ process.on('unhandledRejection', (reason) => {
   logger.error(`Unhandled Rejection: ${reason}`);
   process.exit(1);
 });
+} catch (err) {
+  console.error('Fatal error in server.js:', err);
+}

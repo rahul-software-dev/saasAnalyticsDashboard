@@ -1,18 +1,18 @@
-// server/config/db.js
 const mongoose = require('mongoose');
-const { logger } = require('../middlewares/logger');
+const logger = require('../logs/logger'); // Use your main logger, not middleware logger
+const env = require('./env'); // Use your env loader
 
-const connectDB = async () => {
+async function connectDB() {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
+    const conn = await mongoose.connect(env.mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     logger.info(`MongoDB Connected: ${conn.connection.host}`);
   } catch (err) {
-    logger.error(`MongoDB connection error: ${err.message}`);
+    logger.error('MongoDB connection error:', err);
     process.exit(1);
   }
-};
+}
 
 module.exports = connectDB;
