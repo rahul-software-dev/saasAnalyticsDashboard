@@ -1,8 +1,9 @@
-// server/controllers/tenantController.js
 const Tenant = require('../models/Tenant');
 
+// List tenants with search
 exports.getTenants = async (req, res) => {
   try {
+    // You can add search/filter logic here if needed
     const tenants = await Tenant.find();
     res.json(tenants);
   } catch (err) {
@@ -10,6 +11,7 @@ exports.getTenants = async (req, res) => {
   }
 };
 
+// Create tenant
 exports.createTenant = async (req, res) => {
   try {
     const tenant = await Tenant.create(req.body);
@@ -19,6 +21,7 @@ exports.createTenant = async (req, res) => {
   }
 };
 
+// Get tenant by ID
 exports.getTenant = async (req, res) => {
   try {
     const tenant = await Tenant.findById(req.params.id);
@@ -29,6 +32,7 @@ exports.getTenant = async (req, res) => {
   }
 };
 
+// Update tenant by ID
 exports.updateTenant = async (req, res) => {
   try {
     const tenant = await Tenant.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -39,6 +43,7 @@ exports.updateTenant = async (req, res) => {
   }
 };
 
+// Delete tenant by ID
 exports.deleteTenant = async (req, res) => {
   try {
     const tenant = await Tenant.findByIdAndDelete(req.params.id);
@@ -47,4 +52,19 @@ exports.deleteTenant = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
   }
+};
+
+// Upgrade/downgrade plan (stub)
+exports.updateTenantPlan = (req, res) => {
+  res.status(501).json({ message: 'Update tenant plan not implemented yet' });
+};
+
+// Deactivate tenant (stub)
+exports.deactivateTenant = (req, res) => {
+  res.status(501).json({ message: 'Deactivate tenant not implemented yet' });
+};
+
+// Reactivate tenant (stub)
+exports.reactivateTenant = (req, res) => {
+  res.status(501).json({ message: 'Reactivate tenant not implemented yet' });
 };
