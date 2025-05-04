@@ -1,6 +1,6 @@
-// server/controllers/settingsController.js
 const Settings = require('../models/Settings');
 
+// Get settings for current tenant
 exports.getSettings = async (req, res) => {
   try {
     const settings = await Settings.findOne({ tenant: req.user.tenant });
@@ -10,6 +10,7 @@ exports.getSettings = async (req, res) => {
   }
 };
 
+// Update settings for current tenant
 exports.updateSettings = async (req, res) => {
   try {
     const settings = await Settings.findOneAndUpdate(
@@ -21,4 +22,14 @@ exports.updateSettings = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
   }
+};
+
+// Export settings (stub)
+exports.exportSettings = (req, res) => {
+  res.status(501).json({ message: 'Export settings not implemented yet' });
+};
+
+// Import settings (stub)
+exports.importSettings = (req, res) => {
+  res.status(501).json({ message: 'Import settings not implemented yet' });
 };
