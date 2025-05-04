@@ -1,6 +1,6 @@
-// server/controllers/analyticsController.js
 const Analytics = require('../models/Analytics');
 
+// Get dashboard stats (optionally by time range)
 exports.getDashboardStats = async (req, res) => {
   try {
     // Example: Aggregate stats for current tenant
@@ -14,6 +14,7 @@ exports.getDashboardStats = async (req, res) => {
   }
 };
 
+// Track event (user activity, feature usage, etc.)
 exports.trackEvent = async (req, res) => {
   try {
     const event = await Analytics.create({ ...req.body, tenant: req.user.tenant });
@@ -21,4 +22,9 @@ exports.trackEvent = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
   }
+};
+
+// Export analytics data (CSV/JSON) - stub
+exports.exportAnalytics = (req, res) => {
+  res.status(501).json({ message: 'Export analytics not implemented yet' });
 };
